@@ -1,0 +1,22 @@
+org: sartodia
+app: mo-app-shopify
+service: mo-app-shopify
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+
+package: 
+  patterns: 
+    - '!frontend'
+    - 'frontend/dist/**'
+    - '!.git/**'
+    - '!.gitignore'
+    - '!.env'
+
+functions:
+  api:
+    handler: index.handler
+    events:
+      - httpApi: '*'
